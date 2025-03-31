@@ -1,0 +1,7 @@
+.name-input-wrapper {
+  @include flex-col;
+  gap: $gap-small;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}

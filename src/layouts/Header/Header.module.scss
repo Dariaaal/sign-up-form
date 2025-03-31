@@ -1,0 +1,61 @@
+.header-container {
+  @include flex-justify-sb;
+  padding: 8px 16px;
+
+  @media (min-width: 1200px) {
+    padding: 8px 40px;
+  }
+}
+
+.header-container-without-button {
+  @include flex-center;
+  padding: 8px 16px;
+
+  @media (min-width: 1200px) {
+    padding: 8px 40px;
+  }
+}
+
+.header-logo {
+  font-size: 26px;
+  font-weight: 600;
+  color: $color-secondary-text;
+}
+
+.header-logo-span {
+  color: $color-primary-text;
+}
+
+.sign-up-wrapper {
+  display: flex;
+  align-items: center;
+  gap: $gap-small;
+}
+
+.sign-in-text {
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: $color-primary-text;
+  }
+}
+
+.sign-in-button {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-secondary-text;
+  background-color: $color-white-background;
+  border: none;
+  border-radius: 8px;
+  padding: 10.5px 24px;
+  cursor: pointer; 
+  transition: background-color $time-function;
+
+  &:hover,
+  &:focus {
+    background-color: $color-input-background; 
+  }
+}

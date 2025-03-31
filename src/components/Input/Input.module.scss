@@ -1,0 +1,26 @@
+.input-container {
+  font-size: 20px;
+  font-weight: 400;
+  color: $color-primary-text;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: $color-input-background;
+  padding: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  transition: background-color $time-function;
+
+  &:hover, &:focus {
+    background-color: $color-white-background;
+  }
+
+  &:not(:placeholder-shown) {
+    background-color: $color-white-background;
+  }
+
+  &::placeholder {
+    color: $color-placeholder-text;
+  }
+}

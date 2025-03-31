@@ -1,0 +1,45 @@
+.choice-container {
+  @include flex-center;
+  gap: $gap-small;
+  width: 100%;
+}
+
+.choice-item {
+  @include flex-col;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-primary-text;
+  width: 136px;
+  height: 124px;
+  background-color: $color-input-background;
+  padding: 8px 28px;
+  border-radius: 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  transition: background-color $time-function, transform $time-function;
+
+  input[type="radio"] {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    background-color: $color-white-background;
+  }
+
+  &:has(input:checked) {
+    background-color: $color-white-background;
+  }
+
+  @media (min-width: 768px) {
+    width: 160px;
+    height: 140px;
+  }
+}

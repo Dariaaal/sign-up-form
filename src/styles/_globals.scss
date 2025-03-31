@@ -1,0 +1,86 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+html,
+body {
+  background: linear-gradient(
+    107.15deg,
+    $color-gradient-start 0%,
+    $color-gradient-end 100%
+  ) !important;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+fieldset,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+.react-router-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.react-router-link:hover,
+.react-router-link:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+.react-router-link:active {
+  color: inherit;
+}
+
+// Containers
+.page-container {
+  @include flex-center;
+  position: relative;
+  padding: $gap-small;
+
+  @media (min-width: 600px) {
+    padding: 0;
+  }
+}
+
+.content-wrapper {
+  @include flex-col;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+// Spaces
+.content-gap-big {
+  gap: $gap-big;
+}
+
+.content-gap-small {
+  gap: $gap-small;
+}
+
+.content-gap-medium {
+  gap: $gap-medium;
+}
+
+// Disabled
+.button-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -1,0 +1,36 @@
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+}
+
+.footer-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    gap: $gap-small;
+  }
+}
+
+.footer-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: $color-primary-text;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color $time-function;
+
+  @media (min-width: 768px) {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $color-secondary-text;
+  }
+}

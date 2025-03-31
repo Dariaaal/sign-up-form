@@ -1,0 +1,75 @@
+.cookies-container {
+    @include flex-justify-sb;
+    gap: $gap-small;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    z-index: 2;
+    padding: 4px 8px;
+    background: $color-white-background;
+    backdrop-filter: blur(40px);
+    box-shadow: 0px 8px 16px 0px #0f1a2f0f;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  
+    &.visible {
+      opacity: 1;
+    }
+  
+    &.fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+  
+    @media (min-width: 600px) {
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      max-width: 100%;
+    }
+  
+    @media (min-width: 1200px) {
+      font-size: 14px;
+      padding: 12px 16px;
+      bottom: 16px;
+      left: 40px;
+      right: 40px;
+      width: auto;
+      transform: none;
+    }
+  }
+  
+  .cookies-text {
+    font-size: 10px;
+    font-weight: 400;
+    color: $color-secondary-text;
+  
+    @media (min-width: 1200px) {
+      font-size: 14px;
+      margin: 0 auto;
+    }
+  }
+  
+  .sign-in-button {
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-secondary-text;
+    min-width: 104px;
+    background-color: $color-white-background;
+    box-shadow: 0px 1px 4px 0px #343a3f0d;
+    box-shadow: 0px 4px 12px 0px #343a3f1f;
+    border: none;
+    border-radius: 8px;
+    padding: 10.5px 24.5px;
+    cursor: pointer;
+    transition: background-color $time-function;
+  
+    &:hover,
+    &:focus {
+      background-color: $color-input-background;
+    }
+  }
+  
