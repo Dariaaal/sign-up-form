@@ -52,7 +52,7 @@ a,
 .page-container {
   @include flex-center;
   position: relative;
-  padding: $gap-small;
+  padding: 0 $gap-small;
 
   @media (min-width: 600px) {
     padding: 0;
