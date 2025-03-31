@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AgePreferences } from "../models/AgePreferences";
+import { Birthday } from "../models/Birthday";
 
 type SignUpState = {
   step: number;
   gender: string;
   name: string;
   email: string;
-  age: string;
-  agePreferences: string;
+  birthday: Birthday;
+  agePreferences: AgePreferences;
   contentPreferences: string;
   password: string;
 };
@@ -16,8 +18,15 @@ const initialState: SignUpState = {
   gender: "",
   name: "",
   email: "",
-  age: "",
-  agePreferences: "",
+  birthday: {
+    month: "",
+    day: "",
+    year: ""
+  },
+  agePreferences: {
+    from: "",
+    to: "",
+  },
   contentPreferences: "",
   password: "",
 };
@@ -38,11 +47,20 @@ const signUpSlice = createSlice({
     setEmail(state, action: PayloadAction<string>) {
       state.email = action.payload;
     },
-    setAge(state, action: PayloadAction<string>) {
-      state.age = action.payload;
+    setBirthdayMonth(state, action: PayloadAction<string>) {
+      state.birthday.month = action.payload;
     },
-    setAgePreferences(state, action: PayloadAction<string>) {
-      state.agePreferences = action.payload;
+    setBirthdayDay(state, action: PayloadAction<string>) {
+      state.birthday.day = action.payload;
+    },
+    setBirthdayYear(state, action: PayloadAction<string>) {
+      state.birthday.year = action.payload;
+    },
+    setAgeFrom(state, action: PayloadAction<string>) {
+      state.agePreferences.from = action.payload;
+    },
+    setAgeTo(state, action: PayloadAction<string>) {
+      state.agePreferences.to = action.payload;
     },
     setContentPreferences(state, action: PayloadAction<string>) {
       state.contentPreferences = action.payload;
@@ -58,8 +76,11 @@ export const {
   setGender,
   setName,
   setEmail,
-  setAge,
-  setAgePreferences,
+  setBirthdayMonth,
+  setBirthdayDay,
+  setBirthdayYear,
+  setAgeFrom,
+  setAgeTo,
   setContentPreferences,
   setPasssword,
 } = signUpSlice.actions;

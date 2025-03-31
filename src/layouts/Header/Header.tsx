@@ -14,7 +14,7 @@ const Header:React.FC<Props> = ({signInButton}) => {
         your <span className={styles["header-logo-span"]}>logo®</span>
       </p>
       <div className={styles["sign-up-wrapper"]}>
-        <p className={styles["sign-in-text"]}>Already have an account?</p>
+        {signInButton && <p className={styles["sign-in-text"]}>Already have an account?</p>}
         {signInButton && <button
           className={styles["sign-in-button"]}
           onClick={() => navigate("/signin")}

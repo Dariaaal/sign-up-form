@@ -24,6 +24,8 @@
   font-size: 14px;
   font-weight: 400;
   color: $color-primary-text;
+  width: 100%;
+  max-width: 400px;
 
   @media (min-width: 600px) {
     font-size: 16px;

@@ -1,0 +1,68 @@
+.select-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.select-input {
+  font-size: 20px;
+  font-weight: 400;
+  color: $color-primary-text;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: $color-input-background;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color $time-function;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover,
+  &:focus {
+    background-color: $color-white-background;
+  }
+
+  &.open {
+    background-color: $color-white-background;
+  }
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+}
+
+.open .arrow {
+  transform: rotate(180deg);
+}
+
+.select-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: $color-white-background;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  overflow: hidden;
+  z-index: 3;
+  max-height: 150px;
+  overflow-y: auto; 
+}
+
+.select-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: $color-primary-text;
+  cursor: pointer;
+  transition: background-color $time-function;
+
+  &:hover {
+    background-color: $color-menu-item-hover;
+  }
+}

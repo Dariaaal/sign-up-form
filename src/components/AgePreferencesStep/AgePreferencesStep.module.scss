@@ -1,0 +1,11 @@
+.age-preferences-wrapper {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.age-wrapper {
+  @include flex-col;
+  gap: 16px;
+}
