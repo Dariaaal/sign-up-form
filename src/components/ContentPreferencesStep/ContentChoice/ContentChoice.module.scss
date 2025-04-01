@@ -1,4 +1,8 @@
 .container {
   @include flex-col;
   gap: $gap-small;
+
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
 }

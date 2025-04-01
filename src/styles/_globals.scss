@@ -84,3 +84,10 @@ a,
   pointer-events: none;
   opacity: 0.5;
 }
+
+// Error
+.error-tip {
+  font-size: 12px;
+  font-weight: 400;
+  color: $color-error;
+}

@@ -1,132 +1,138 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CookieBanner from "../components/CookieBanner/CookieBanner";
 import Footer from "../layouts/Footer/Footer";
 import Header from "../layouts/Header/Header";
-import "../styles/main.scss";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 import GenderStep from "../components/GenderStep/GenderStep";
+import NameStep from "../components/NameStep/NameStep";
+import AgePreferencesStep from "../components/AgePreferencesStep/AgePreferencesStep";
+import ContentPreferencesStep from "../components/ContentPreferencesStep/ContentPreferencesStep";
+import PasswordStep from "../components/PasswordStep/PasswordStep";
+import FinalStep from "../components/FinalStep/FinalStep";
 import { Option } from "../models/Option";
 import {
   nextStep,
+  previousStep,
   setAgeFrom,
   setAgeTo,
   setBirthdayDay,
   setBirthdayMonth,
   setBirthdayYear,
+  setContentPreferences,
+  setEmail,
   setGender,
   setName,
+  setPasssword,
 } from "../store/slice";
 import { RootState } from "../store";
-import NameStep from "../components/NameStep/NameStep";
-import ProgressBar from "../components/ProgressBar/ProgressBar";
-import { cx } from "../lib/classNames";
-import AgePreferencesStep from "../components/AgePreferencesStep/AgePreferencesStep";
+import { cx } from "../utils/classNames";
+import "../styles/main.scss";
 
 const genderStepOptions: Option[] = [
-  {
-    id: 1,
-    image: "male.png",
-    text: "Male",
-  },
-  {
-    id: 2,
-    image: "female.png",
-    text: "Female",
-  },
+  { id: 1, image: "male.png", text: "Male" },
+  { id: 2, image: "female.png", text: "Female" },
+];
+
+const contentStepOptions: Option[] = [
+  { id: 1, image: "hot.png", text: "Hot" },
+  { id: 2, image: "trendy.png", text: "Trendy" },
 ];
 
 const SignUpPage = () => {
   const [showCookies, setShowCookies] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [highlightSignIn, setHighlightSignIn] = useState(false);
+
   const step = useSelector((state: RootState) => state.signUp.step);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowCookies(true);
-    }, 2000);
-
+    const timer = setTimeout(() => setShowCookies(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
   const handleSignInClick = () => {
     setFadeOut(true);
-    setTimeout(() => {
-      setShowCookies(false);
-      setFadeOut(false);
-    }, 500);
+    setHighlightSignIn(true);
+    setTimeout(() => setShowCookies(false), 500);
+    setTimeout(() => setHighlightSignIn(false), 1500);
   };
 
-  const handleGenderChoose = (option: Option) => {
-    dispatch(setGender(option.text));
-  };
-
-  const handleNameChoose = (name: string) => {
-    dispatch(setName(name));
-  };
-
-  const handleAgePreferencesChange = (
-    field: "Month" | "Day" | "Year" | "From" | "To",
-    value: string
-  ) => {
-    switch (field) {
-      case "Month":
-        dispatch(setBirthdayMonth(value));
-        break;
-      case "Day":
-        dispatch(setBirthdayDay(value));
-        break;
-      case "Year":
-        dispatch(setBirthdayYear(value));
-        break;
-      case "From":
-        dispatch(setAgeFrom(value));
-        break;
-      case "To":
-        dispatch(setAgeTo(value));
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleNextClick = () => {
-    dispatch(nextStep());
+  const handleStepChange = {
+    gender: (option: Option) => dispatch(setGender(option.text)),
+    name: (name: string) => dispatch(setName(name)),
+    age: (field: "Month" | "Day" | "Year" | "From" | "To", value: string) => {
+      const actions = {
+        Month: setBirthdayMonth,
+        Day: setBirthdayDay,
+        Year: setBirthdayYear,
+        From: setAgeFrom,
+        To: setAgeTo,
+      };
+      dispatch(actions[field](value));
+    },
+    content: (option: Option) => dispatch(setContentPreferences(option.text)),
+    email: (email: string) => dispatch(setEmail(email)),
+    password: (password: string) => dispatch(setPasssword(password)),
   };
 
   return (
     <div>
-      <Header signInButton={step === 1} />
-      <div className={"page-container"}>
+      <Header
+        signInButton={step === 1}
+        highlight={highlightSignIn}
+        handleBackClick={() => dispatch(previousStep())}
+      />
+      <div className="page-container">
         <div
           className={cx(
             "content-wrapper",
             step === 1 ? "content-gap-medium" : "content-gap-big"
           )}
         >
-          <ProgressBar step={step} totalSteps={6} />
+          {step !== 6 && <ProgressBar step={step} totalSteps={6} />}
           {step === 1 && (
             <GenderStep
               options={genderStepOptions}
-              handleGenderChoose={handleGenderChoose}
-              handleNextClick={handleNextClick}
+              handleGenderChoose={handleStepChange.gender}
+              handleNextClick={() => dispatch(nextStep())}
             />
           )}
           {step === 2 && (
             <NameStep
-              handleNextClick={handleNextClick}
-              handleNameChange={handleNameChoose}
+              handleNextClick={() => dispatch(nextStep())}
+              handleNameChange={handleStepChange.name}
             />
           )}
           {step === 3 && (
             <AgePreferencesStep
-              handleAgePreferencesChange={handleAgePreferencesChange}
-              handleNextClick={handleNextClick}
+              handleAgePreferencesChange={handleStepChange.age}
+              handleNextClick={() => dispatch(nextStep())}
             />
+          )}
+          {step === 4 && (
+            <ContentPreferencesStep
+              options={contentStepOptions}
+              handleContentChoose={handleStepChange.content}
+              handleEmailChange={handleStepChange.email}
+              handleNextClick={() => dispatch(nextStep())}
+            />
+          )}
+          {step === 5 && (
+            <PasswordStep
+              handlePasswordChange={handleStepChange.password}
+              handleNextClick={() => dispatch(nextStep())}
+            />
+          )}
+          {step === 6 && (
+            <FinalStep handleJoinClick={() => navigate("/signin")} />
           )}
         </div>
       </div>
-      {showCookies && (
+      {step === 1 && showCookies && (
         <CookieBanner onSignInClick={handleSignInClick} fadeOut={fadeOut} />
       )}
       {step === 1 && <Footer />}

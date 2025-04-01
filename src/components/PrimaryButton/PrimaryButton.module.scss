@@ -1,17 +1,17 @@
 .primary-button {
-    font-size: 24px;
-    font-weight: 600;
-    color: $color-white-text;
-    background-color: $color-button-background;
-    padding: 16px 27px;
-    border: none;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 400px;
-    cursor: pointer;
-    transition: background-color $time-function;
+  @include primary-width;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-white-text;
+  background-color: $color-button-background;
+  padding: 16px 27px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color $time-function;
 
-    &:hover {
-        background-color: $color-button-hover;
-    }
+  &:hover {
+    background-color: $color-button-hover;
+  }
 }

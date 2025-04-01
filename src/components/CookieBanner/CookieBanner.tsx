@@ -8,7 +8,9 @@ type Props = {
 const CookieBanner: React.FC<Props> = ({ onSignInClick, fadeOut }) => {
   return (
     <div
-      className={`${styles["cookies-container"]} ${fadeOut ? styles["fade-out"] : styles["visible"]}`}
+      className={`${styles["cookies-container"]} ${
+        fadeOut ? styles["fade-out"] : styles["visible"]
+      }`}
     >
       <p className={styles["cookies-text"]}>
         We use cookies to make your experience better! If you continue to use

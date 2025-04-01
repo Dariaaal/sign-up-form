@@ -19,7 +19,11 @@ const Choice: React.FC<Props> = ({ options, selectedOption, onChange }) => {
             checked={selectedOption === item.text}
             onChange={() => onChange(item)}
           />
-          <img src={item.image} alt={item.text} />
+          <img
+            src={item.image}
+            alt={item.text}
+            className={styles["choice-img"]}
+          />
           <p>{item.text}</p>
         </label>
       ))}

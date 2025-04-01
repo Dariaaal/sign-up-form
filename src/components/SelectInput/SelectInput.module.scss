@@ -1,7 +1,6 @@
 .select-container {
+  @include primary-width;
   position: relative;
-  width: 100%;
-  max-width: 400px;
 }
 
 .select-input {
@@ -52,7 +51,7 @@
   overflow: hidden;
   z-index: 3;
   max-height: 150px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .select-item {

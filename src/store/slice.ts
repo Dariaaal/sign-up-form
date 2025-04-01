@@ -38,6 +38,9 @@ const signUpSlice = createSlice({
     nextStep: (state) => {
       state.step += 1;
     },
+    previousStep: (state) => {
+      state.step -= 1;
+    },
     setGender(state, action: PayloadAction<string>) {
       state.gender = action.payload;
     },
@@ -73,6 +76,7 @@ const signUpSlice = createSlice({
 
 export const {
   nextStep,
+  previousStep,
   setGender,
   setName,
   setEmail,

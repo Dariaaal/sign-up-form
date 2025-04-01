@@ -51,11 +51,17 @@
   border: none;
   border-radius: 8px;
   padding: 10.5px 24px;
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color $time-function;
 
   &:hover,
   &:focus {
-    background-color: $color-input-background; 
+    background-color: $color-input-background;
   }
+}
+
+.sign-in-button-highlight {
+  box-shadow: rgba(38, 38, 38, 0.959) 0px 5px 15px;
+  scale: 1.1;
+  transition: scale $time-function, box-shadow $time-function;
 }

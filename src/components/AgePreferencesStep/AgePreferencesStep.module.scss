@@ -1,8 +1,7 @@
 .age-preferences-wrapper {
+  @include primary-width;
   display: flex;
   gap: 8px;
-  width: 100%;
-  max-width: 400px;
 }
 
 .age-wrapper {

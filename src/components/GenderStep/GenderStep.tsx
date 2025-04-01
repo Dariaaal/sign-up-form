@@ -1,4 +1,4 @@
-import { cx } from "../../lib/classNames";
+import { cx } from "../../utils/classNames";
 import { Option } from "../../models/Option";
 import GenderChoice from "./GenderChoice/GenderChoice";
 import PhotosCarousel from "./PhotosCarousel/PhotosCarousel";
@@ -20,7 +20,7 @@ const GenderStep: React.FC<Props> = ({
   const gender = useSelector((state: RootState) => state.signUp.gender);
 
   return (
-    <div className={cx("content-wrapper", "content-gap-small")}>
+    <div className={cx("content-wrapper", "content-gap-medium")}>
       <h1 className="heading">Glad you're here!</h1>
       <PhotosCarousel />
       <GenderChoice
